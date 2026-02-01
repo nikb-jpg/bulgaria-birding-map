@@ -56,7 +56,7 @@ const locations: Location[] = [
         region: "Eastern Rhodopes",
         bestTime: "Early Morning (06:00 - 09:00)",
         species: "Griffon Vulture, Egyptian Vulture, Black Stork",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Arda_River_meander.jpg/1280px-Arda_River_meander.jpg",
+        img: "/images/madzharovo.jpg",
         description: "The crater of an ancient volcano, this is the best place in the Balkans to observe Griffon Vultures. The vertical cliffs provide perfect nesting sites.",
         proTip: "Visit the BSPB center first. The best photography spots are the cliffs directly opposite the center across the Arda river."
     },
@@ -67,7 +67,7 @@ const locations: Location[] = [
         region: "Eastern Rhodopes",
         bestTime: "Late Afternoon",
         species: "Black Vulture, Golden Eagle, Fallow Deer",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Studen_Kladenets_Reservoir_2.jpg/1280px-Studen_Kladenets_Reservoir_2.jpg",
+        img: "/images/studen-kladenets.jpg",
         description: "A wild, rugged landscape known for its Wolf and Vulture hides. The topography here is dramatic, with steep slopes plunging into the reservoir.",
         proTip: "Book the official 'Vulture Hide' well in advance. It offers eye-level shots of feeding raptors."
     },
@@ -78,7 +78,7 @@ const locations: Location[] = [
         region: "Burgas Coast",
         bestTime: "Sunrise / Sunset",
         species: "Spoonbill, Glossy Ibis, Pygmy Cormorant",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Poda_Protected_Area.jpg/1280px-Poda_Protected_Area.jpg",
+        img: "/images/poda.jpg",
         description: "A wetland hotspot with the highest bird density in Bulgaria. The mix of salt, brackish, and fresh water attracts diverse flocks.",
         proTip: "The roof terrace of the center offers a great vantage point, but the lower hides are better for intimate water-level reflections."
     },
@@ -89,7 +89,7 @@ const locations: Location[] = [
         region: "Burgas Coast",
         bestTime: "Noon (High Contrast) or Sunset",
         species: "Greater Flamingo, Avocet, Shelduck",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Burgas_salt_pans.jpg/1280px-Burgas_salt_pans.jpg",
+        img: "/images/saltpans.jpg",
         description: "Famous for its pink waters caused by brine shrimp—the favorite food of the thousands of flamingos that reside here year-round.",
         proTip: "Park at the 'Salt Museum' entrance. Walk along the dikes. The red water creates surreal, alien-looking backgrounds for photos."
     }
@@ -146,13 +146,11 @@ export default function BirdingApp() {
                                 onClick={() => handleLocationClick(loc)}
                                 className={`location-card ${isActive ? 'active' : ''}`}
                             >
-                                {/* UPDATED: Using proper img tag instead of background-image for reliability */}
                                 <div className="location-image-wrapper">
                                     <img 
                                         src={loc.img} 
                                         alt={loc.name} 
                                         className="location-image"
-                                        referrerPolicy="no-referrer"
                                     />
                                     <div className="image-overlay">
                                         <span className="region-tag-overlay">{loc.region}</span>
@@ -312,7 +310,6 @@ export default function BirdingApp() {
                     box-shadow: 0 12px 24px rgba(39, 174, 96, 0.15);
                 }
 
-                /* --- UPDATED IMAGE STYLES --- */
                 .location-image-wrapper {
                     position: relative;
                     width: 100%;
