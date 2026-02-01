@@ -184,9 +184,39 @@ export default function BirdingApp() {
 
                                         <div style={{ marginTop: '15px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                                             {loc.species.split(',').map((bird, i) => (
-                                                <span key={i} style={{ fontSize: '0.75rem', border: '1px solid #bdc3c7', padding: '4px 8px', borderRadius: '20px', color: '#7f8c8d' }}>
-                                                    {bird.trim()}
-                                                </span>
+                                                <a 
+                                                    key={i} 
+                                                    href={`https://www.google.com/search?q=${encodeURIComponent(bird.trim())} bird`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    style={{ 
+                                                        fontSize: '0.75rem', 
+                                                        border: '1px solid #27ae60', 
+                                                        padding: '4px 12px', 
+                                                        borderRadius: '20px', 
+                                                        color: '#27ae60',
+                                                        textDecoration: 'none',
+                                                        backgroundColor: 'rgba(39, 174, 96, 0.05)',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.2s ease',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '4px',
+                                                        fontWeight: 500
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#27ae60';
+                                                        e.currentTarget.style.color = 'white';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.backgroundColor = 'rgba(39, 174, 96, 0.05)';
+                                                        e.currentTarget.style.color = '#27ae60';
+                                                    }}
+                                                    title={`Search for ${bird.trim()} on Google`}
+                                                >
+                                                    <span style={{ fontSize: '0.9em' }}>🔍</span> {bird.trim()}
+                                                </a>
                                             ))}
                                         </div>
                                     </div>
