@@ -67,7 +67,7 @@ const locations: Location[] = [
         region: "Eastern Rhodopes",
         bestTime: "Late Afternoon",
         species: "Black Vulture, Golden Eagle, Fallow Deer",
-        img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1000",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Studen_Kladenets_Reservoir_2.jpg/1280px-Studen_Kladenets_Reservoir_2.jpg",
         description: "A wild, rugged landscape known for its Wolf and Vulture hides. The topography here is dramatic, with steep slopes plunging into the reservoir.",
         proTip: "Book the official 'Vulture Hide' well in advance. It offers eye-level shots of feeding raptors."
     },
@@ -78,7 +78,7 @@ const locations: Location[] = [
         region: "Burgas Coast",
         bestTime: "Sunrise / Sunset",
         species: "Spoonbill, Glossy Ibis, Pygmy Cormorant",
-        img: "https://images.unsplash.com/photo-1444492417251-9c84a5fa18e0?auto=format&fit=crop&q=80&w=1000",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Poda_Protected_Area.jpg/1280px-Poda_Protected_Area.jpg",
         description: "A wetland hotspot with the highest bird density in Bulgaria. The mix of salt, brackish, and fresh water attracts diverse flocks.",
         proTip: "The roof terrace of the center offers a great vantage point, but the lower hides are better for intimate water-level reflections."
     },
@@ -89,7 +89,7 @@ const locations: Location[] = [
         region: "Burgas Coast",
         bestTime: "Noon (High Contrast) or Sunset",
         species: "Greater Flamingo, Avocet, Shelduck",
-        img: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&q=80&w=1000",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Atanasovsko_Lake_Solnitsite.jpg/1280px-Atanasovsko_Lake_Solnitsite.jpg",
         description: "Famous for its pink waters caused by brine shrimp—the favorite food of the thousands of flamingos that reside here year-round.",
         proTip: "Park at the 'Salt Museum' entrance. Walk along the dikes. The red water creates surreal, alien-looking backgrounds for photos."
     }
@@ -114,10 +114,6 @@ export default function BirdingApp() {
 
     const handleLocationClick = (loc: Location) => {
         setActiveLoc(loc);
-        // On mobile, we keep the list open but maybe minimize it slightly? 
-        // Actually, let's keep it open so they can read the details they just clicked.
-        // But if they click the *same* one, maybe toggle?
-        // For now, simple behavior: just set active.
     };
 
     return (
@@ -150,7 +146,6 @@ export default function BirdingApp() {
                                 onClick={() => handleLocationClick(loc)}
                                 className={`location-card ${isActive ? 'active' : ''}`}
                             >
-                                {/* Image is now ALWAYS visible at the top of the card */}
                                 <div 
                                     className="location-image"
                                     style={{ backgroundImage: `url(${loc.img})` }}
@@ -292,14 +287,13 @@ export default function BirdingApp() {
                     background: #f8f9fa;
                 }
 
-                /* --- NEW CARD DESIGN --- */
                 .location-card {
                     background: white;
                     margin-bottom: 20px;
                     border-radius: 12px;
                     cursor: pointer;
                     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-                    overflow: hidden; /* Important for image */
+                    overflow: hidden;
                     transition: transform 0.2s, box-shadow 0.2s;
                     border: 1px solid transparent;
                 }
@@ -316,7 +310,7 @@ export default function BirdingApp() {
 
                 .location-image {
                     width: 100%;
-                    height: 140px; /* Visible by default */
+                    height: 140px;
                     background-size: cover;
                     background-position: center;
                     transition: height 0.3s ease;
@@ -324,7 +318,7 @@ export default function BirdingApp() {
                 }
 
                 .location-card.active .location-image {
-                    height: 220px; /* Expands when active */
+                    height: 220px;
                 }
 
                 .image-overlay {
