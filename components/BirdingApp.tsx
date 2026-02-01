@@ -89,7 +89,7 @@ const locations: Location[] = [
         region: "Burgas Coast",
         bestTime: "Noon (High Contrast) or Sunset",
         species: "Greater Flamingo, Avocet, Shelduck",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Atanasovsko_Lake_Solnitsite.jpg/1280px-Atanasovsko_Lake_Solnitsite.jpg",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Burgas_salt_pans.jpg/1280px-Burgas_salt_pans.jpg",
         description: "Famous for its pink waters caused by brine shrimp—the favorite food of the thousands of flamingos that reside here year-round.",
         proTip: "Park at the 'Salt Museum' entrance. Walk along the dikes. The red water creates surreal, alien-looking backgrounds for photos."
     }
@@ -146,10 +146,14 @@ export default function BirdingApp() {
                                 onClick={() => handleLocationClick(loc)}
                                 className={`location-card ${isActive ? 'active' : ''}`}
                             >
-                                <div 
-                                    className="location-image"
-                                    style={{ backgroundImage: `url(${loc.img})` }}
-                                >
+                                {/* UPDATED: Using proper img tag instead of background-image for reliability */}
+                                <div className="location-image-wrapper">
+                                    <img 
+                                        src={loc.img} 
+                                        alt={loc.name} 
+                                        className="location-image"
+                                        referrerPolicy="no-referrer"
+                                    />
                                     <div className="image-overlay">
                                         <span className="region-tag-overlay">{loc.region}</span>
                                     </div>
@@ -308,17 +312,24 @@ export default function BirdingApp() {
                     box-shadow: 0 12px 24px rgba(39, 174, 96, 0.15);
                 }
 
-                .location-image {
+                /* --- UPDATED IMAGE STYLES --- */
+                .location-image-wrapper {
+                    position: relative;
                     width: 100%;
                     height: 140px;
-                    background-size: cover;
-                    background-position: center;
+                    overflow: hidden;
                     transition: height 0.3s ease;
-                    position: relative;
                 }
 
-                .location-card.active .location-image {
+                .location-card.active .location-image-wrapper {
                     height: 220px;
+                }
+
+                .location-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
                 }
 
                 .image-overlay {
